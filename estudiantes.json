@@ -1,0 +1,18 @@
+[
+    {
+        "usuario": "Piero",
+        "contrasena": "1234a",
+        "nombre": "PIERO ROJO",
+        "grado": "6TO",
+        "horario": [
+            "MI CLASE ES TEMPRANO"
+        ],
+        "notas": [
+            "MATEMATICAS : 00",
+            "INGLES 05"
+        ],
+        "anuncios": [
+            "TRAER CARTULINA"
+        ]
+    }
+]
