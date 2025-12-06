@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buscar Usuarios</title>
+</head>
+<body>
+    <h2>Buscar Usuarios</h2>
+    
+    <form method="POST">
+        <input name="termino" placeholder="Buscar por nombre o usuario">
+        <button>Buscar</button>
+    </form>
+    
+    <h3>Resultados</h3>
+    
+    {% if resultados %}  <!-- ✅ VERIFICAR SI HAY RESULTADOS -->
+        {% if resultados|length > 0 %}  <!-- ✅ VERIFICAR SI NO ESTÁ VACÍO -->
+            <ul>
+            {% for u in resultados %}
+                <li>
+                    {{ u.nombre }} — {{ u.usuario }} — {{ u.tipo }}
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No se encontraron resultados.</p>
+        {% endif %}
+    {% else %}
+        <p>Ingresa un término de búsqueda.</p>
+    {% endif %}
+    
+    <!-- ✅ ENLACE CORREGIDO: /perfilP en lugar de /perfil_profesor -->
+    <br>
+    <a href="/perfilP">Volver al perfil</a>
+</body>
+</html>

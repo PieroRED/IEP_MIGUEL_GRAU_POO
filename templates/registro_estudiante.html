@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Registro Estudiante</title>
+</head>
+<body>
+    <h2>Registro Estudiante</h2>
+    <form method="POST">
+        Usuario: <input name="usuario" required><br>
+        Contraseña: <input type="password" name="contrasena" required><br>
+        Nombre: <input name="nombre" required><br>
+        Grado: <input name="grado" required><br>
+        <button type="submit">Registrar estudiante</button>
+    </form>
+    <p><a href="{{ url_for('registro') }}">Volver</a></p>
+</body>
+</html>

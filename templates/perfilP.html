@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Perfil Profesor</title>
+</head>
+<body>
+
+<h2>Perfil del Profesor</h2>
+
+<p><strong>Usuario:</strong> {{ profesor.usuario }}</p>
+<p><strong>Nombre:</strong> {{ profesor.nombre }}</p>
+<p><strong>Curso:</strong> {{ profesor.curso }}</p>
+
+<h3>Anuncios</h3>
+<ul>
+    {% for a in profesor.anuncios %}
+        <li>{{ a }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Acciones del Profesor</h3>
+<ul>
+    <li><a href="/agregar_nota">➕ Agregar nota a estudiante</a></li>
+    <li><a href="/buscar">🔍 Buscar usuarios</a></li>
+</ul>
+
+<a href="/logout">Cerrar sesión</a>
+
+</body>
+</html>

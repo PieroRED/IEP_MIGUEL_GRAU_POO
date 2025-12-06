@@ -1,0 +1,58 @@
+[
+    {
+        "usuario": "Piero",
+        "contrasena": "1234a",
+        "nombre": "PIERO ROJO",
+        "tipo": "estudiante",
+        "anuncios": [
+            "TRAER CARTULINA"
+        ],
+        "grado": "6TO",
+        "horario": [
+            "Matemáticas: 8:00 AM",
+            "Comunicación: 9:00 AM"
+        ],
+        "notas": [
+            "Matemáticas: 15",
+            "Comunicación: 17",
+            "Historia: 14",
+            "Ciencia: 16"
+        ]
+    },
+    {
+        "usuario": "fabio",
+        "contrasena": "1234a",
+        "nombre": "FABIO ROJO",
+        "tipo": "estudiante",
+        "anuncios": [
+            "TRAER CARTULINA"
+        ],
+        "grado": "6TO",
+        "horario": [
+            "MI CLASE ES TEMPRANO"
+        ],
+        "notas": [
+            "MATEMATICAS : 20",
+            "INGLES 15",
+            "LENGUAJE: 17"
+        ]
+    },
+    {
+        "usuario": "PIERO1",
+        "contrasena": "123",
+        "nombre": "PIERO RANDOM",
+        "tipo": "estudiante",
+        "anuncios": [],
+        "grado": "6TO",
+        "horario": [],
+        "notas": []
+    },
+    {
+        "usuario": "PROFE1",
+        "contrasena": "123",
+        "nombre": "PEDRO",
+        "tipo": "profesor",
+        "anuncios": [],
+        "curso": "CALCULO1"
+    }
+]

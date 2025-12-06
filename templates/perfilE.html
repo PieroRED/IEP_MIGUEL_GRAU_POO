@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Perfil Estudiante</title>
+</head>
+<body>
+
+<h2>Perfil del Estudiante</h2>
+
+<p><strong>Usuario:</strong> {{ estudiante.usuario }}</p>
+<p><strong>Nombre:</strong> {{ estudiante.nombre }}</p>
+<p><strong>Grado:</strong> {{ estudiante.grado }}</p>
+
+<h3>Horario</h3>
+<ul>
+    {% for h in estudiante.horario %}
+        <li>{{ h }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Notas</h3>
+<ul>
+    {% for n in estudiante.notas %}
+        <li>{{ n }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Promedio</h3>
+    <a href="/promedio">Ver mi promedio calculado</a>
+    
+    <br><br>
+    
+
+<a href="/logout">Cerrar sesión</a>
+
+</body>
+</html>

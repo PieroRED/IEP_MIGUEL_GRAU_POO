@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi Promedio</title>
+</head>
+<body>
+    <h2>Promedio Académico</h2>
+    
+    <p><strong>Estudiante:</strong> {{ estudiante.nombre }}</p>
+    <p><strong>Grado:</strong> {{ estudiante.grado }}</p>
+    
+    <h3>Notas:</h3>
+    {% if estudiante.notas %}
+        <ul>
+        {% for nota in estudiante.notas %}
+            <li>{{ nota }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay notas registradas.</p>
+    {% endif %}
+    
+    <h3>Promedio General: {{ promedio }}</h3>
+    
+    <br>
+    <a href="/perfilE">Volver a mi perfil</a> |
+    <a href="/logout">Cerrar sesión</a>
+</body>
+</html>
