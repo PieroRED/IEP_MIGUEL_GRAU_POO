@@ -1,18 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <title>Registro Estudiante</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 420px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 24px 28px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 18px;
+            font-size: 22px;
+            color: #1f2933;
+        }
+
+        form {
+            text-align: left; /* sigue a la izquierda */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 1px #2563eb33;
+        }
+
+        button {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 4px;
+            background: #2563eb;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        p {
+            margin-top: 16px;
+            font-size: 14px;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h2>Registro Estudiante</h2>
-    <form method="POST">
-        Usuario: <input name="usuario" required><br>
-        Contraseña: <input type="password" name="contrasena" required><br>
-        Nombre: <input name="nombre" required><br>
-        Grado: <input name="grado" required><br>
-        <button type="submit">Registrar estudiante</button>
-    </form>
-    <p><a href="{{ url_for('registro') }}">Volver</a></p>
+    <div class="container">
+        <h2>Registro Estudiante</h2>
+
+        <form method="POST">
+            <label for="usuario">Usuario</label>
+            <input id="usuario" name="usuario" required>
+
+            <label for="contrasena">Contraseña</label>
+            <input id="contrasena" type="password" name="contrasena" required>
+
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" required>
+
+            <label for="grado">Grado</label>
+            <input id="grado" name="grado" required>
+
+            <button type="submit">Registrar estudiante</button>
+        </form>
+
+        <p><a href="{{ url_for('registro') }}">Volver</a></p>
+    </div>
 </body>
 </html>

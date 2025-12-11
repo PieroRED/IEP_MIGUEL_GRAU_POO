@@ -1,13 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <title>Registro - seleccionar</title>
+
+    <style>
+    body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #2563eb, #4f46e5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+
+        /* para que haya el mismo espacio a los lados en cualquier pantalla */
+        padding: 0 16px;
+        box-sizing: border-box;
+    }
+
+    .container {
+        background: #ffffff;
+        padding: 26px 30px;
+        border-radius: 16px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+
+        /* centra y hace que el espacio blanco izquierda/derecha sea igual */
+        width: 100%;
+        max-width: 500px;
+        box-sizing: border-box;
+        text-align: left;
+    }
+
+    h2 {
+        margin: 0 0 16px;
+        text-align: center;
+        font-size: 28px;
+        color: #111827;
+    }
+
+    .description {
+        font-size: 15px;
+        color: #4b5563;
+        margin-bottom: 18px;
+    }
+
+    .options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        display: block;
+        width: 92%;
+        padding: 12px 16px;
+        border-radius: 10px;
+        text-decoration: none;
+        text-align: center;
+        font-size: 15px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        background: #2563eb;
+        color: #ffffff;
+        transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn:hover {
+        background: #1d4ed8;
+        transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+        background: #e5e7eb;
+        color: #111827;
+    }
+
+    .btn-secondary:hover {
+        background: #d1d5db;
+    }
+</style>
+
 </head>
 <body>
-    <h2>Registro - elegir tipo</h2>
-    <p><a href="{{ url_for('registro_estudiante') }}">Registrar como Estudiante</a></p>
-    <p><a href="{{ url_for('registro_profesor') }}">Registrar como Profesor</a></p>
-    <p><a href="{{ url_for('login') }}">Volver al login</a></p>
+
+    <div class="container">
+        <h2>Registro - elegir tipo</h2>
+        <p class="description">
+            Elige el tipo de cuenta que deseas registrar:
+        </p>
+
+        <div class="options">
+            <a href="{{ url_for('registro_estudiante') }}" class="btn">
+                Registrar como Estudiante
+            </a>
+
+            <a href="{{ url_for('registro_profesor') }}" class="btn">
+                Registrar como Profesor
+            </a>
+
+            <a href="{{ url_for('login') }}" class="btn btn-secondary">
+                Volver al login
+            </a>
+        </div>
+    </div>
+
 </body>
 </html>
