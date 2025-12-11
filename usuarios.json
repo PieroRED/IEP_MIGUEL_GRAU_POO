@@ -54,5 +54,15 @@
         "tipo": "profesor",
         "anuncios": [],
         "curso": "CALCULO1"
+    },
+    {
+        "usuario": "estudiante1",
+        "contrasena": "123",
+        "nombre": "Estudiante Uno",
+        "tipo": "estudiante",
+        "anuncios": [],
+        "grado": "Sexto de Primaria",
+        "horario": [],
+        "notas": []
     }
 ]

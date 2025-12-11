@@ -50,12 +50,20 @@ def registro_estudiante():
         nombre = request.form.get("nombre", "").strip()
         grado = request.form.get("grado", "").strip()
 
+        # Validar campos vacíos
+        if not all([usuario, contrasena, nombre, grado]):
+            return "Todos los campos son obligatorios"
+
         # Validaciones mínimas (puedes ampliar)
         if any(u.usuario == usuario for u in sistema.usuarios):
-            return redirect(url_for("registro_estudiante"))
+            return "El usuario ya existe"
 
-        obj = Estudiante(usuario, contrasena, nombre, grado)
-        sistema.registrar(obj)
+        try:
+            obj = Estudiante(usuario, contrasena, nombre, grado)
+            sistema.registrar(obj)
+        except Exception as e:
+            return f"Error al registrar: {e}"
+        
         return redirect(url_for("login"))
 
     return render_template("registro_estudiante.html")
@@ -69,11 +77,19 @@ def registro_profesor():
         nombre = request.form.get("nombre", "").strip()
         curso = request.form.get("curso", "").strip()
 
-        if any(u.usuario == usuario for u in sistema.usuarios):
-            return redirect(url_for("registro_profesor"))
+        # Validar campos vacíos
+        if not all([usuario, contrasena, nombre, curso]):
+            return "Todos los campos son obligatorios"
 
-        obj = Profesor(usuario, contrasena, nombre, curso)
-        sistema.registrar(obj)
+        if any(u.usuario == usuario for u in sistema.usuarios):
+            return "El usuario ya existe"
+
+        try:
+            obj = Profesor(usuario, contrasena, nombre, curso)
+            sistema.registrar(obj)
+        except Exception as e:
+            return f"Error al registrar: {e}"
+        
         return redirect(url_for("login"))
 
     return render_template("registro_profesor.html")
@@ -154,6 +170,18 @@ def agregar_nota():
         materia = request.form.get("materia", "").strip()
         nota = request.form.get("nota", "").strip()
         
+        # Validar campos vacíos
+        if not all([usuario_estudiante, materia, nota]):
+            return "Todos los campos son obligatorios"
+        
+        # Validar que la nota sea un número válido
+        try:
+            nota_float = float(nota)
+            if not (0 <= nota_float <= 20):
+                return "La nota debe estar entre 0 y 20"
+        except ValueError:
+            return "La nota debe ser un número válido"
+        
         # Buscar al estudiante
         estudiante = sistema.buscar_por_usuario(usuario_estudiante)
         
@@ -161,7 +189,11 @@ def agregar_nota():
             # Agregar nota con formato "Materia: nota"
             nueva_nota = f"{materia}: {nota}"
             estudiante.notas.append(nueva_nota)
-            sistema.guardar_json()  # Guardar en JSON
+            
+            try:
+                sistema.guardar_json()  # Guardar en JSON
+            except Exception as e:
+                return f"Error al guardar la nota: {e}"
             
             return redirect(url_for("perfilP"))
         else:

@@ -1,11 +1,12 @@
 # sistema.py
 import json
 import os
+from abc import ABC, abstractmethod
 
 # ================================
 # CLASE BASE USUARIO
 # ================================
-class Usuario:
+class Usuario(ABC):
     def __init__(self, usuario, contrasena, nombre, tipo):
         self.usuario = usuario
         self.contrasena = contrasena
@@ -13,15 +14,25 @@ class Usuario:
         self.tipo = tipo  # "estudiante" o "profesor"
         self.anuncios = []
 
+    @abstractmethod
+    def tipo_usuario(self):
+        """Tipo del usuario"""
+        pass
+
 # ================================
 # ESTUDIANTE (hereda)
 # ================================
 class Estudiante(Usuario):
     def __init__(self, usuario, contrasena, nombre, grado):
+        if not all([usuario, contrasena, nombre, grado]):
+            raise ValueError("Todos los campos son obligatorios")
         super().__init__(usuario, contrasena, nombre, "estudiante")
         self.grado = grado
         self.horario = []
         self.notas = []
+
+    def tipo_usuario(self):
+        return "estudiante"
     def calcular_promedio(self):
         """Calcula el promedio de las notas del estudiante"""
         if not self.notas:  # Si no hay notas
@@ -57,8 +68,13 @@ class Estudiante(Usuario):
 # ================================
 class Profesor(Usuario):
     def __init__(self, usuario, contrasena, nombre, curso):
+        if not all([usuario, contrasena, nombre, curso]):
+            raise ValueError("Todos los campos son obligatorios")
         super().__init__(usuario, contrasena, nombre, "profesor")
         self.curso = curso
+
+    def tipo_usuario(self):
+        return "profesor"
 
 # ================================
 # SISTEMA ACADEMICO
@@ -74,8 +90,12 @@ class SistemaAcademico:
         if not os.path.exists(self.ruta_archivo):
             return
 
-        with open(self.ruta_archivo, "r", encoding="utf-8") as f:
-            datos = json.load(f)
+        try:
+            with open(self.ruta_archivo, "r", encoding="utf-8") as f:
+                datos = json.load(f)
+        except (json.JSONDecodeError, IOError) as e:
+            print(f"Error al cargar JSON: {e}")
+            return
 
         self.usuarios = []
 
@@ -126,8 +146,12 @@ class SistemaAcademico:
 
             datos.append(base)
 
-        with open(self.ruta_archivo, "w", encoding="utf-8") as f:
-            json.dump(datos, f, indent=4, ensure_ascii=False)
+        try:
+            with open(self.ruta_archivo, "w", encoding="utf-8") as f:
+                json.dump(datos, f, indent=4, ensure_ascii=False)
+        except IOError as e:
+            print(f"Error al guardar JSON: {e}")
+            raise
 
     # Registrar empacando el objeto (POO)
     def registrar(self, obj_usuario):
