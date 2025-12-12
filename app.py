@@ -1,5 +1,25 @@
 # .\venv\Scripts\Activate PARA EL ENTORNO VIRTUAL
 
+# 1. IR A TU CARPETA DEL PROYECTO
+# cd ruta/a/tu/proyecto
+
+# 2. INICIAR CONTROL DE VERSIONES (solo primera vez)
+# git init
+
+# 3. PREPARAR TODOS LOS ARCHIVOS
+# git add .
+
+# 4. GUARDAR PRIMER VERSIÓN
+# git commit -m "Primer commit: Sistema académico Miguel Grau"
+
+# 5. CONECTAR CON GITHUB (solo primera vez) - CON TU ENLACE REAL
+# git remote add origin https://github.com/PieroRED/IEP_MIGUEL_GRAU_POO.git
+
+# 6. SUBIR A GITHUB
+# git push -u origin main   # Si usas rama 'main'
+# O si usas rama 'master':
+# git push -u origin master
+
 from flask import Flask, render_template, request, redirect, url_for, session
 from sistema import SistemaAcademico, Estudiante, Profesor
 
