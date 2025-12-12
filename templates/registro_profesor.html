@@ -1,18 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <title>Registro Profesor</title>
+    <!-- CSS externo específico para esta vista -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/registro_profesor.css') }}">
 </head>
 <body>
-    <h2>Registro Profesor</h2>
-    <form method="POST">
-        Usuario: <input name="usuario" required><br>
-        Contraseña: <input type="password" name="contrasena" required><br>
-        Nombre: <input name="nombre" required><br>
-        Curso: <input name="curso" required><br>
-        <button type="submit">Registrar profesor</button>
-    </form>
-    <p><a href="{{ url_for('registro') }}">Volver</a></p>
+    <div class="container">
+        <h2>Registro Profesor</h2>
+
+        <form method="POST">
+            <label for="usuario">Usuario</label>
+            <input id="usuario" name="usuario" required>
+
+            <label for="contrasena">Contraseña</label>
+            <input id="contrasena" type="password" name="contrasena" required>
+
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" required>
+
+            <label for="curso">Curso</label>
+            <input id="curso" name="curso" required>
+
+            <button type="submit">Registrar profesor</button>
+        </form>
+
+        <p><a href="{{ url_for('registro') }}">Volver</a></p>
+    </div>
 </body>
 </html>

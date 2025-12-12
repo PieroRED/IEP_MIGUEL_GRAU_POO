@@ -1,36 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="utf-8">
     <title>Buscar Usuarios</title>
+
+    <!-- CSS externo específico para esta vista -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/buscar.css') }}">
 </head>
 <body>
+
+<div class="card">
     <h2>Buscar Usuarios</h2>
-    
+    <p class="subtitle">Busca estudiantes o profesores por nombre o usuario.</p>
+
     <form method="POST">
-        <input name="termino" placeholder="Buscar por nombre o usuario">
-        <button>Buscar</button>
+        <div class="search-row">
+            <input name="termino" placeholder="Ejemplo: César, Profe001, estudiante…" />
+            <button type="submit">Buscar</button>
+        </div>
+        <p class="hint">Tip: también puedes escribir “estudiante” o “profesor” para filtrar por tipo.</p>
     </form>
-    
+
     <h3>Resultados</h3>
-    
-    {% if resultados %}  <!-- ✅ VERIFICAR SI HAY RESULTADOS -->
-        {% if resultados|length > 0 %}  <!-- ✅ VERIFICAR SI NO ESTÁ VACÍO -->
-            <ul>
+
+    {% if resultados is not none %}
+        {% if resultados|length > 0 %}
+            <ul class="results-list">
             {% for u in resultados %}
-                <li>
-                    {{ u.nombre }} — {{ u.usuario }} — {{ u.tipo }}
+                <li class="result-item">
+                    <div class="result-main">
+                        <span class="result-name">{{ u.nombre }}</span>
+                        <span class="result-user">@{{ u.usuario }}</span>
+                    </div>
+                    <span class="result-tag">{{ u.tipo }}</span>
                 </li>
             {% endfor %}
             </ul>
         {% else %}
-            <p>No se encontraron resultados.</p>
+            <p class="empty-message">No se encontraron usuarios que coincidan con tu búsqueda.</p>
         {% endif %}
     {% else %}
-        <p>Ingresa un término de búsqueda.</p>
+        <p class="empty-message">Ingresa un término de búsqueda para ver los resultados.</p>
     {% endif %}
-    
-    <!-- ✅ ENLACE CORREGIDO: /perfilP en lugar de /perfil_profesor -->
-    <br>
-    <a href="/perfilP">Volver al perfil</a>
+
+    <div class="actions">
+        <a href="/perfilP" class="back-link">Volver al perfil</a>
+    </div>
+</div>
+
 </body>
 </html>

@@ -1,29 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="utf-8">
     <title>Mi Promedio</title>
+
+    <!-- CSS externo específico para esta vista -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/promedio.css') }}">
 </head>
 <body>
-    <h2>Promedio Académico</h2>
-    
-    <p><strong>Estudiante:</strong> {{ estudiante.nombre }}</p>
-    <p><strong>Grado:</strong> {{ estudiante.grado }}</p>
-    
-    <h3>Notas:</h3>
-    {% if estudiante.notas %}
-        <ul>
-        {% for nota in estudiante.notas %}
-            <li>{{ nota }}</li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No hay notas registradas.</p>
-    {% endif %}
-    
-    <h3>Promedio General: {{ promedio }}</h3>
-    
-    <br>
-    <a href="/perfilE">Volver a mi perfil</a> |
-    <a href="/logout">Cerrar sesión</a>
+
+<div class="card">
+    <h2 class="header-title">Promedio Académico</h2>
+    <p class="subtitle">Resumen de notas del estudiante</p>
+
+    <p class="info"><span>Estudiante:</span> {{ estudiante.nombre }}</p>
+    <p class="info"><span>Grado:</span> {{ estudiante.grado }}</p>
+
+    <div class="section-title">Notas</div>
+    <div class="notas-box">
+        {% if estudiante.notas %}
+            <ul>
+            {% for nota in estudiante.notas %}
+                <li>{{ nota }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p class="info">No hay notas registradas.</p>
+        {% endif %}
+    </div>
+
+    <div class="promedio-box">
+        <div class="promedio-label">Promedio General</div>
+        <div class="promedio-value">{{ promedio }}</div>
+    </div>
+
+    <div class="actions">
+        <a href="/perfilE" class="btn btn-primary">Volver a mi perfil</a>
+        <a href="/logout" class="btn btn-secondary">Cerrar sesión</a>
+    </div>
+</div>
+
 </body>
 </html>
